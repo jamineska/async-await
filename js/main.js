@@ -11,20 +11,6 @@ const infoDatos = [
 }];
 
 
-//probando boton
-boton.addEventListener("click", function (event) {
-    const usuario = "Camilaparker"
-    getUsuario(usuario)
-        .then((usuario) => {
-            info.textContent =
-                `El usuario ${usuario.nombre} con el email ${usuario.email}`
-        })
-        .catch((error) => {
-            info.textContent = error;
-        });
-}
-);
-
 //poniendo los segundos y la promesa
 const getUsuario = (nombre) => {
     const usuario = infoDatos.find((user) => user.nombre === nombre)
@@ -38,6 +24,20 @@ const getUsuario = (nombre) => {
         }, "1000");        
     });
 };
+
+//probando boton y resuelva promesa
+boton.addEventListener("click", function (event) {
+    const usuario = "Camilaparker"
+    getUsuario(usuario)
+        .then((usuario) => {
+            info.textContent =
+                `El usuario ${usuario.nombre} con el email ${usuario.email}`
+        })
+        .catch((error) => {
+            info.textContent = error;
+        });
+}
+);
 
 //activando async
 boton.addEventListener("click", async function (event){
