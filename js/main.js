@@ -3,6 +3,14 @@ const usuario = document.querySelector("#datosUsuario");
 const boton = document.querySelector(".boton button");
 const info = document.querySelector(".informacion");
 
+
+//creamos variable
+const infoDatos = [
+    {
+        nombre: "Camila", email: "camilaP@mipaginaweb.com",
+}];
+
+
 //probando boton
 boton.addEventListener("click", function (event) {
     const usuario = "Camilaparker"
@@ -17,14 +25,7 @@ boton.addEventListener("click", function (event) {
 }
 );
 
-//variable
-
-const infoDatos = [
-    {
-        nombre: "Camila", email: "camilaP@mipaginaweb.com",
-}];
-
-//poniendo los segundos
+//poniendo los segundos y la promesa
 const getUsuario = (nombre) => {
     const usuario = infoDatos.find((user) => user.nombre === nombre)
     return new Promise((resolve, reject) => {
@@ -34,12 +35,11 @@ const getUsuario = (nombre) => {
                 resolve(usuario);
             } else{ reject(`No hay usuario con este dato ${nombre} no existe`);
         }
-}, "1000");        
+        }, "1000");        
     });
 };
 
-//async
-
+//activando async
 boton.addEventListener("click", async function (event){
     const usuarioBuscar = 'Camila';
 
