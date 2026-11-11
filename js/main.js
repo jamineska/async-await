@@ -30,8 +30,7 @@ boton.addEventListener("click", function (event) {
     const usuario = "Camilaparker"
     getUsuario(usuario)
         .then((usuario) => {
-            info.textContent =
-                `El usuario ${usuario.nombre} con el email ${usuario.email}`
+            pintarUsuario(usuario.nombre, usuario.email)
         })
         .catch((error) => {
             info.textContent = error;
@@ -45,9 +44,9 @@ boton.addEventListener("click", async function (event){
 
     try{
         const usuarioResult = await getUsuario(usuarioBuscar);
-    
     //si caso salga bien:
-    info.textContent =`El usuario ${usuario.nombre}con el email ${usuarioResult.email}`;
+        pintarUsuario(usuarioResult.nombre, usuarioResult.email);
+
     } catch (error) {
         //caso la promesa sea rechazada:
         info.textContent= error;
@@ -72,4 +71,9 @@ const usuarioEmail = async () => {
         return email
     }
     throw 'email equivocado'
+}
+
+
+const pintarUsuario = (nombre, email)=> {
+info.textContent =`El usuario ${nombre} con el email ${email}`
 }
